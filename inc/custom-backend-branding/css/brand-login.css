@@ -1,0 +1,45 @@
+body {
+  background: #EEEFEF;
+  color: #272828;
+}
+
+.custom-login-branding {
+  text-align: center;
+  margin-top: 0px;
+  background: #282727;
+  float: left;
+  width: 100%;
+}
+
+.custom-login-branding a {
+  display: block;
+  float: left;
+  margin-left: calc(50% - 62px);
+}
+
+.custom-login-branding a img {
+  display: block;
+  padding: 10px 0;
+}
+
+.login #login_error,
+ .login .message,
+ .login .success {
+  border-left: 4px solid #5EAFAF;
+}
+
+.wp-core-ui .button, .wp-core-ui .button-secondary {
+  color: #FFFFFF;
+}
+
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
+  background: #4E9F9F;
+  border-color: #4E9F9F;
+  color: #fff;
+}
+
+.login #backtoblog a:hover,
+.login #nav a:hover,
+.login h1 a:hover {
+  color: #2e7f7f;
+}

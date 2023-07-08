@@ -1,9 +1,9 @@
-body {
+body.login {
   background: #EEEFEF;
   color: #272828;
 }
 
-.custom-login-branding {
+body.login .custom-login-branding {
   text-align: center;
   margin-top: 0px;
   background: #282727;
@@ -11,24 +11,27 @@ body {
   width: 100%;
 }
 
-.custom-login-branding a {
+body.login .custom-login-branding a {
   display: block;
   float: left;
   margin-left: calc(50% - 62px);
 }
 
-.custom-login-branding a img {
+body.login .custom-login-branding a img {
   display: block;
   padding: 10px 0;
 }
 
 .login #login_error,
- .login .message,
- .login .success {
+.login .message,
+.login .success {
   border-left: 4px solid #5EAFAF;
 }
 
-.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
+.wp-core-ui .button-primary.focus,
+.wp-core-ui .button-primary.hover,
+.wp-core-ui .button-primary:focus,
+.wp-core-ui .button-primary:hover {
   background: #4E9F9F;
   border-color: #4E9F9F;
   color: #fff;
@@ -38,4 +41,10 @@ body {
 .login #nav a:hover,
 .login h1 a:hover {
   color: #2e7f7f;
+}
+
+input[data-com-onepassword-filled="light"],
+select[data-com-onepassword-filled="light"],
+textarea[data-com-onepassword-filled="light"] {
+  background-color: #e6f1f1 !important;
 }

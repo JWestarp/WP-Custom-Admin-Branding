@@ -269,7 +269,7 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
           if( $this->args['designer_url'] && $this->args['designer_anchor'] && $this->args['login_footer_image']) {
 
               $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external"><img class="custom-brand" src="%3$s" alt="%4$s Logo" width="%5$s" height="%6$s"></a>',
+                  '<a href="%1$s" title="%2$s" rel="external" target="_blank"><img class="custom-brand" src="%3$s" alt="%4$s Logo" width="%5$s" height="%6$s"></a>',
                   esc_url( $this->args['designer_url'] ),
                   esc_attr( $this->args['designer_anchor'] ),
                   esc_url( $this->args['login_footer_image'] ),
@@ -279,7 +279,7 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
               );
           } elseif( $this->args['designer_url'] && $this->args['designer_anchor'] ) {
               $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external">%2$s</a>',
+                  '<a href="%1$s" title="%2$s" rel="external" target="_blank>%2$s</a>',
                   esc_url( $this->args['designer_url'] ),
                   esc_attr( $this->args['designer_anchor'] )
               );
@@ -299,7 +299,7 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
           if( $this->args['designer_url'] && $this->args['designer_anchor'] && $this->args['backend_footer_image']) {
 
               $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external"><img class="custom-brand" src="%3$s" alt="%4$s Logo" width="%5$s" height="%6$s"></a>',
+                  '<a href="%1$s" title="%2$s" rel="external" target="_blank><img class="custom-brand" src="%3$s" alt="%4$s Logo" width="%5$s" height="%6$s"></a>',
                   esc_url( $this->args['designer_url'] ),
                   esc_attr( $this->args['designer_anchor'] ),
                   esc_url( $this->args['backend_footer_image'] ),
@@ -316,7 +316,7 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
 
           } elseif( $this->args['designer_url'] && $this->args['designer_anchor'] ) {
               $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external">%2$s</a>',
+                  '<a href="%1$s" title="%2$s" rel="external" target="_blank>%2$s</a>',
                   esc_url( $this->args['designer_url'] ),
                   esc_attr( $this->args['designer_anchor'] )
               );

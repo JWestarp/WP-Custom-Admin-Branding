@@ -28,18 +28,12 @@ First, grab the code.  You can do this with git:
 Or you can download the [zipball](https://github.com/JWestarp/WP-Custom-Admin-Branding/archive/refs/heads/master.zip).
 
 Add the content of `functions.php` to your `functions.php` and copy the `inc` folder to your theme.
+Now you have to copy your logos to `inc/custom-backend-branding/images` and set your logos and text in `inc/custom-backend-branding/config.php`.
+
+Change the CSS files as you need or just search and replace the colors. I just generated the CSS file with an online tool and added some styles to get all elements in the new color.
+
 
 ### Arguments
-
-* `login_url` - Where would you like the logo above the login form to link? Defaults to wordpress.org
-* `login_image` - What will replace the WordPress logo on the login page.
-* `login_title` - The title attribute on the logo link on the login page.
-* `login_height` - Height of the login logo image.
-* `login_width` - Width of the login login logo image. ~320px is recommended. Defaults to 326px.
-* `designer_url` - Used in the credit link on the login and admin pages. Your website!
-* `designer_anchor` - Anchor text for the credit link.
-* `favicon_url` - The favicon to be added on the login and admin pages and on the front end.
-* `remove_wp` - Remove the WordPress drop down from the admin menu bar if set to true. The Default is false.
 
 * `designer_url` - Used in the credit link on the login and admin pages.
 * `designer_anchor` - Used in the credit link on the login and admin pages.

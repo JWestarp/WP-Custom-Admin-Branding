@@ -92,7 +92,7 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
       public function login_enqueue_scripts()
       {
           wp_enqueue_style( 'custom-backend', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend.css", false );
-          wp_enqueue_style( 'custom-login', CUSTOM_BACKEND_BRANDING_DIRECTORY . "/css/brand-login.css", false );
+          wp_enqueue_style( 'custom-login', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-login.css", false );
       }
 
       /**
@@ -187,8 +187,8 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
        */
       public function admin_bar_menu_remove( $wp_admin_bar )
       {
-          $wp_admin_bar->remove_node('wp-logo' );
-	        $wp_admin_bar->remove_node('comments');
+          $wp_admin_bar->remove_node('wp-logo');
+          $wp_admin_bar->remove_node('comments');
           $wp_admin_bar->remove_node('customize');
           $wp_admin_bar->remove_node('customize-background');
           $wp_admin_bar->remove_node('customize-header');

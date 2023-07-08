@@ -28,10 +28,6 @@ body {
   border-left: 4px solid #5EAFAF;
 }
 
-.wp-core-ui .button, .wp-core-ui .button-secondary {
-  color: #FFFFFF;
-}
-
 .wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
   background: #4E9F9F;
   border-color: #4E9F9F;

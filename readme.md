@@ -4,7 +4,6 @@ Custom Admin Branding
 A class to allow theme/plugin developers to easily brand the WordPress login and admin screens.
 I changed some things to fit the needs of an agency.
 
-
 ## Features
 
 * Add a designer credit with logo to login footer

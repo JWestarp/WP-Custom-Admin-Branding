@@ -108,9 +108,13 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
         */
        public function admin_enqueue_scripts()
        {
-         if ( is_user_logged_in() ) {
+         if ( is_admin() ) {
            wp_enqueue_style( 'custom-backend-brand', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend.css", false );
            wp_enqueue_style( 'custom-backend-brand-wpfm-plugin', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend-wpfm-plugin.css", false );
+           wp_enqueue_style( 'custom-backend-brand-wp-admin-bar', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-wp-admin-bar.css", false );
+           wp_enqueue_style( 'custom-backend', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/custom.css", false );
+         } else {
+           wp_enqueue_style( 'custom-backend-brand-wp-admin-bar', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-wp-admin-bar.css", false );
            wp_enqueue_style( 'custom-backend', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/custom.css", false );
          }
        }

@@ -38,13 +38,17 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
        * the login and admin areas.
        *
        * The args
-       *      `login_link` - The link on the login image
-       *      `login_image` - URI for the image above the login form
-       *      `login_heigth` - Height of the image above the login form
-       *      `login_width` - Width of the image above the login form
-       *      `designer_link` - URI for the login & admin footer credit link
-       *      `designer_anchor` - Anchor text for login & admin footer credit link
-       *      `favicon_url` - The favicon URI, added to the admin, login, & front end
+       * `designer_url` - Used in the credit link on the login and admin pages.
+       * `designer_anchor` - Used in the credit link on the login and admin pages.
+       * `login_footer_image` - URL of logo in footer on login page.
+       * `login_footer_image_width` - Logo width.
+       * `login_footer_image_height` - Logo height.
+       * `backend_footer_image` - URL of small logo in footer of backend pages.
+       * `backend_footer_image_widt` - Logo width.
+       * `backend_footer_image_height` - Logo height.
+       * `backend_footer_text` - Text arround small backend footer logo
+       * `favicon_url` - URL of backend favicon
+       * `admin_bar_icon_url`  - URL of in WP Admin Bar
        *
        * @param array $args See above
        */
@@ -54,7 +58,7 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
               $args,
               array(
                   'login_url'                   => get_bloginfo( "url" ),
-                  //'login_image'               => false,
+                  'login_image'                 => false,
                   'login_title'                 => get_bloginfo( 'site_name' ),
                   'designer_url'                => false,
                   'designer_anchor'             => false,
@@ -72,13 +76,13 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
 
           add_filter( 'login_enqueue_scripts', array( &$this, 'login_enqueue_scripts' ) );
           add_filter( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
+          add_filter( 'wp_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) ); // load Admin CSS on frontend for adminbar
           add_filter( 'login_headerurl', array( &$this, 'login_headerurl' ) );
           add_filter( 'admin_footer_text', array( &$this, 'admin_footer_text' ) );
           add_filter( 'login_headertitle', array( &$this, 'login_headertitle' ) );
           add_action( 'login_head', array( &$this, 'login_head' ) );
           add_action( 'login_footer', array( &$this, 'login_footer' ) );
           add_action( 'admin_head', array( &$this, 'add_favicon' ) );
-          add_action( 'wp_head', array( &$this, 'add_favicon' ) );
           add_action( 'admin_bar_menu', array( &$this, 'admin_bar_menu_icon' ), 25 );
           add_action( 'admin_bar_menu', array( &$this, 'admin_bar_menu_remove' ), 999 );
 
@@ -89,21 +93,27 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
        *
        * @access public
        */
-      public function login_enqueue_scripts()
-      {
-          wp_enqueue_style( 'custom-backend', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend.css", false );
-          wp_enqueue_style( 'custom-login', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-login.css", false );
-      }
+       public function login_enqueue_scripts()
+       {
+           wp_enqueue_style( 'custom-backend-brand', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend.css", false );
+           wp_enqueue_style( 'custom-backend-brand-wpfm-plugin', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend-wpfm-plugin.css", false );
+           wp_enqueue_style( 'custom-backend-brand-login', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-login.css", false );
+           wp_enqueue_style( 'custom-backend', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/custom.css", false );
+       }
 
-      /**
-       * Eenqueue Backend CSS in Backend
-       *
-       * @access public
-       */
-      public function admin_enqueue_scripts()
-      {
-          wp_enqueue_style( 'custom-backend', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend.css", false );
-      }
+       /**
+        * Eenqueue Backend CSS in Backend
+        *
+        * @access public
+        */
+       public function admin_enqueue_scripts()
+       {
+         if ( is_user_logged_in() ) {
+           wp_enqueue_style( 'custom-backend-brand', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend.css", false );
+           wp_enqueue_style( 'custom-backend-brand-wpfm-plugin', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/brand-backend-wpfm-plugin.css", false );
+           wp_enqueue_style( 'custom-backend', CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/css/custom.css", false );
+         }
+       }
 
       /**
        * Change the `login_headerurl` to whatever was specified in $args
@@ -133,6 +143,24 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
       public function login_head()
       {
           $this->add_favicon();
+/*
+          // Custom CSS with variables example
+          if( !($this->args['login_footer_image']) ) return;
+          if( !($this->args['login_footer_image_width']) ) return;
+          if( !($this->args['login_footer_image_height']) ) return;
+
+?>
+
+<style>
+body.login .custom-login-branding img {
+  width: <?php echo $this->args['login_footer_image_width']; ?>px;
+  height: <?php echo $this->args['login_footer_image_height']; ?>px;
+}
+</style>
+
+<?php
+          // End custom CSS with variables example
+*/
       }
 
       /**
@@ -230,33 +258,6 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
        * @access protected
        */
        /*
-      protected function designer_link()
-      {
-          $rv = '';
-          if( $this->args['designer_url'] && $this->args['designer_anchor'] && $this->args['login_footer_image'])
-          {
-              $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external"><img src="%3$s" alt="%4$s Logo" width="%5$s" height="%6$s"></a>',
-                  esc_url( $this->args['designer_url'] ),
-                  esc_attr( $this->args['designer_anchor'] ),
-                  esc_url( $this->args['login_footer_image'] ),
-                  esc_attr( $this->args['designer_anchor'] ),
-                  esc_attr( $this->args['login_footer_image_width'] ),
-                  esc_attr( $this->args['login_footer_image_height'] ),
-              );
-          }
-          elseif( $this->args['designer_url'] && $this->args['designer_anchor'] )
-          {
-              $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external">%2$s</a>',
-                  esc_url( $this->args['designer_url'] ),
-                  esc_attr( $this->args['designer_anchor'] )
-              );
-          }
-          return $rv;
-
-      }
-      */
 
       /**
        * Designer Credit Logo + Link for Login (big)
@@ -265,26 +266,31 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
        */
       protected function designer_image_link()
       {
-          $rv = '';
+          $return = '';
           if( $this->args['designer_url'] && $this->args['designer_anchor'] && $this->args['login_footer_image']) {
 
-              $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external" target="_blank"><img class="custom-brand" src="%3$s" alt="%4$s Logo" width="%5$s" height="%6$s"></a>',
-                  esc_url( $this->args['designer_url'] ),
-                  esc_attr( $this->args['designer_anchor'] ),
-                  esc_url( $this->args['login_footer_image'] ),
-                  esc_attr( $this->args['designer_anchor'] ),
-                  esc_attr( $this->args['login_footer_image_width'] ),
-                  esc_attr( $this->args['login_footer_image_height'] ),
-              );
+              $designer_url = esc_url( $this->args['designer_url'] );
+              $designer_anchor = esc_attr( $this->args['designer_anchor'] );
+              $login_footer_image = esc_url( $this->args['login_footer_image'] );
+              $designer_anchor = esc_attr( $this->args['designer_anchor'] );
+              $login_footer_image_width = esc_attr( $this->args['login_footer_image_width'] );
+              $login_footer_image_height = esc_attr( $this->args['login_footer_image_height'] );
+
+              $return = '<a href="' . $designer_url . '" title="' . $designer_anchor . '" rel="external" targe="_blank">
+                            <img src="' . $login_footer_image . '" alt="' . $designer_anchor . ' Logo" width="' . $login_footer_image_width . '" height="' . $login_footer_image_height . '">
+                         </a>';
+
           } elseif( $this->args['designer_url'] && $this->args['designer_anchor'] ) {
-              $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external" target="_blank>%2$s</a>',
-                  esc_url( $this->args['designer_url'] ),
-                  esc_attr( $this->args['designer_anchor'] )
-              );
+
+              $designer_url = esc_url( $this->args['designer_url'] );
+              $designer_anchor = esc_attr( $this->args['designer_anchor'] );
+
+              $return = '<a href="' . $designer_url . '" title="' . $designer_anchor . '" rel="external" targe="_blank">
+                          {designer_anchor}
+                        </a>';
+
           }
-          return $rv;
+          return $return;
 
       }
 
@@ -295,34 +301,38 @@ if( ! class_exists( 'Custom_Admin_Branding' ) ):
        */
       protected function designer_small_image_link()
       {
-        $rv = '';
+        $return = '';
           if( $this->args['designer_url'] && $this->args['designer_anchor'] && $this->args['backend_footer_image']) {
 
-              $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external" target="_blank"><img class="custom-brand" src="%3$s" alt="%4$s Logo" width="%5$s" height="%6$s"></a>',
-                  esc_url( $this->args['designer_url'] ),
-                  esc_attr( $this->args['designer_anchor'] ),
-                  esc_url( $this->args['backend_footer_image'] ),
-                  esc_attr( $this->args['designer_anchor'] ),
-                  esc_attr( $this->args['backend_footer_image_width'] ),
-                  esc_attr( $this->args['backend_footer_image_height'] ),
-              );
+                  $designer_url = esc_url( $this->args['designer_url'] );
+                  $designer_anchor = esc_attr( $this->args['designer_anchor'] );
+                  $backend_footer_image = esc_url( $this->args['backend_footer_image'] );
+                  $designer_anchor = esc_attr( $this->args['designer_anchor'] );
+                  $backend_footer_image_width = esc_attr( $this->args['backend_footer_image_width'] );
+                  $backend_footer_image_height = esc_attr( $this->args['login_footer_image_height'] );
+
+                  $return = '<a href="' . $designer_url . '" title="' . $designer_anchor . '" rel="external" targe="_blank">
+                                <img src="' . $login_footer_image . '" alt="' . $designer_anchor . ' Logo" width="' . $login_footer_image_width . '" height="' . $login_footer_image_height . '">
+                             </a>';
 
               if( $backend_footer_text = $this->args['backend_footer_text'] ) {
 
-                $rv =  str_replace("%image%", $rv, $backend_footer_text);
+                $return =  str_replace("%image%", $return, $backend_footer_text);
 
               }
 
           } elseif( $this->args['designer_url'] && $this->args['designer_anchor'] ) {
-              $rv = sprintf(
-                  '<a href="%1$s" title="%2$s" rel="external" target="_blank>%2$s</a>',
-                  esc_url( $this->args['designer_url'] ),
-                  esc_attr( $this->args['designer_anchor'] )
-              );
+
+              $designer_url = esc_url( $this->args['designer_url'] );
+              $designer_anchor = esc_attr( $this->args['designer_anchor'] );
+
+              $return = '<a href="' . $designer_url . '" title="' . $designer_anchor . '" rel="external" targe="_blank">
+                          {designer_anchor}
+                        </a>';
+
           }
 
-          return $rv;
+          return $return;
 
       }
   } // end class

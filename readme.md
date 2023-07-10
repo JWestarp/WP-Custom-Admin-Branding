@@ -2,7 +2,7 @@ Custom Admin Branding
 =====================
 
 A class to allow theme/plugin developers to easily brand the WordPress login and admin screens.
-I changed some things to fit the needs of an agency.
+
 
 ## Features
 
@@ -12,13 +12,6 @@ I changed some things to fit the needs of an agency.
 * Remove the built in WordPress button in WP Admin Bar and add custom icon
 * Add a favicon to the login, admin and front end of the site
 * (The login logo is not changed in this fork, because I solved this differently in my system. The logo of the customer is changed for each project and therefore has to be maintained in the backend via ACF.)
-
-
-## Screenshots
-
-* ![Login page custom footer logo.](/screenshots/login-screen-footer-logo.png?raw=true)
-* ![Clean Admin Bar in backend with custom icon.](/screenshots/backend-admin-bar.png?raw=true)
-* ![Small footer logo in backend.](/screenshots/backend-footer.png?raw=true)
 
 
 ## Who This is For
@@ -54,6 +47,13 @@ Change the CSS files as you need or just search and replace the colors. I just g
 * `backend_footer_text` - Text arround small backend footer logo
 * `favicon_url` - URL of backend favicon
 * `admin_bar_icon_url`  - URL of in WP Admin Bar
+
+
+## Screenshots
+
+* <img src="/screenshots/login-screen-footer-logo.png?raw=true" alt="Screenshot Login Footer Logo" width="420" />
+* <img src="/screenshots/backend-admin-bar.png?raw=true" alt="Screenshot Admin Bar Icon" width="420" />
+* <img src="/screenshots/backend-footer.png?raw=true" alt="Screenshot Backend Footer Logo" width="420" />
 
 
 ## License

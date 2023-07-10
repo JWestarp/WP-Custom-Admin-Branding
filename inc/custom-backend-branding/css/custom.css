@@ -1,0 +1,44 @@
+/**
+ * Change as you like!
+ * ---------------------------------------------------------------- */
+
+/* WP Admin Footer */
+p#footer-left img.custom-brand {
+  position: relative;
+  bottom: -2px;
+}
+
+p#footer-left span {
+  font-size: 14px;
+}
+
+/* Menu */
+#adminmenu {
+  margin: 0 0 12px;
+}
+
+#adminmenu,
+#adminmenuwrap {
+  background: transparent;
+}
+
+#adminmenuback,
+#adminmenu .wp-submenu, {
+  background-color: #282727;
+}
+
+#adminmenuback:before {
+  background: radial-gradient(circle, rgba(78, 159, 159 ,1) 0%, rgba(78, 159, 159 ,0) 70%);
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+}
+
+#adminmenu .wp-submenu {
+  background-color: #334b4b;
+}
+#adminmenu .opensub .wp-submenu {
+  background-color: #282727;
+}

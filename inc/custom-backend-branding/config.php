@@ -6,7 +6,7 @@ new Custom_Admin_Branding( array(
 
     'designer_url'                => 'https://comon-werbeagentur.de/',
     'designer_anchor'             => 'com.on | DEINE AGENTUR',
-    'login_footer_image'          => CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/images/logo-286x90-white.svg",
+    'login_footer_image'          => CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/images/logo-286x90.svg",
     'login_footer_image_width'    => '127',
     'login_footer_image_height'   => '40',
     'backend_footer_image'        => CUSTOM_BACKEND_BRANDING_DIRECTORY_URI . "/images/logo-reduces-284x72.svg",

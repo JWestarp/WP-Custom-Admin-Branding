@@ -1,8 +1,5 @@
-/**
- * File generated with
- * @link https://wpadmincolors.com/
- * Generate your own and save it in this file!
- * ---------------------------------------------------------------- */
+
+/* https://wpadmincolors.com/ */
 
 body {
   background: #f1f1f1;
@@ -578,4 +575,118 @@ div#wp-responsive-toggle a:before {
 .mce-container.mce-menu .mce-menu-item-normal.mce-active,
 .mce-container.mce-menu .mce-menu-item-preview.mce-active {
   background: #4e9f9f;
+}
+
+
+
+/* WP Media Folder*/
+
+.wpmf-attachment.mdc-list-item:hover {
+    background-color: #41;
+}
+
+.wpmf-folder.ui-draggable-dragging,
+.wpmf-move-element {
+    background: #4E9F9F !important;
+}
+.wpmf-new-folder,
+.wpmf-loadmore-folder {
+    border: 0.5px solid #4E9F9F !important;
+    color: #4E9F9F;
+}
+
+.wpmf-main-tree li.selected > .wpmf-item:after {
+    border-right: #4E9F9F 5px solid;
+}
+
+.wpmf-main-tree li.selected > .wpmf-item .wpmf-item-icon,
+.wpmf-main-tree li.selected > .wpmf-item .tree_drive_icon {
+    color: #4E9F9F !important;
+}
+
+.wpmf-main-tree li.selected > .wpmf-item .tree_drive_icon_img * {
+    fill: #4E9F9F !important;
+}
+
+.wpmf-main-tree li.selected > .wpmf-item .wpmf-item-title {
+    color: #313131 !important;
+}
+
+.wpmf-main-tree li.selected > .wpmf-item[data-id="0"] .wpmf-item-title {
+    color: #4E9F9F !important;
+}
+
+.wpmf-main-tree li.selected > .wpmf-item .wpmf-item-count,
+.wpmf-main-tree li.selected > .wpmf-item .wpmf-item-count-all {
+    background: #4E9F9F;
+}
+
+.wpmf-item > .wpmf-item-inside > a[data-id="0"] > .wpmf-item-title {
+    color: #4E9F9F;
+}
+
+.wpmf-item:hover .wpmf-item-count,
+.wpmf-item:hover .wpmf-item-count-all {
+    background: #4E9F9F;
+}
+
+
+.wpmf-main-tree-resize {
+    background: #f1f1f1;
+    border-right: 2px solid #4E9F9F;
+    border-left: 2px solid #4E9F9F;
+}
+
+.wpmf-main-tree-resize:after {
+    background: #4E9F9F;
+    border-left: #f1f1f1 2px solid;
+}
+
+.elementor-editor-wp-post .media-frame-menu .wpmf-main-tree-resize:after,
+.elementor-editor-wp-page .media-frame-menu .wpmf-main-tree-resize:after {
+    border-left: #4E9F9F 2px solid;
+}
+
+.ju-button.blue-button {
+    background-color: #4E9F9F;
+    color: #fff;
+    border-color: #4E9F9F;
+}
+
+.ju-button.wpmf_cancel_btn {
+    color: #4E9F9F;
+    border-color: #4E9F9F;
+}
+
+#folder_permissions .wpmf_tabs .wpmf_tab.active {
+    color: #fff;
+    background: #4E9F9F;
+}
+
+.wpmf-attachment.mdc-list-item:hover {
+    background-color: #4E9F9F;
+}
+
+.wpmf-folder.ui-draggable-dragging,
+.wpmf-move-element {
+    background: #4E9F9F !important;
+}
+
+.wpmf_icon_remote_video:hover {
+    background-color: #4E9F9F;
+    color: #fff;
+}
+.view-switch a.current::before {
+  color: #4E9F9F !important;
+}
+
+.wpmf_icon_remote_video,
+.wpmf_btn_upload_folder,
+.wrap .add-new-h2,
+.wrap .add-new-h2:active,
+.wrap .page-title-action,
+.wrap .page-title-action:active
+.page-title-action {
+  border: 1px solid #4E9F9F;
+  color: #4E9F9F;
 }

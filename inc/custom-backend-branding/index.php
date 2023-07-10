@@ -313,10 +313,10 @@ body.login .custom-login-branding img {
                   $backend_footer_image = esc_url( $this->args['backend_footer_image'] );
                   $designer_anchor = esc_attr( $this->args['designer_anchor'] );
                   $backend_footer_image_width = esc_attr( $this->args['backend_footer_image_width'] );
-                  $backend_footer_image_height = esc_attr( $this->args['login_footer_image_height'] );
+                  $backend_footer_image_height = esc_attr( $this->args['backend_footer_image_height'] );
 
-                  $return = '<a href="' . $designer_url . '" title="' . $designer_anchor . '" rel="external" targe="_blank">
-                                <img src="' . $login_footer_image . '" alt="' . $designer_anchor . ' Logo" width="' . $login_footer_image_width . '" height="' . $login_footer_image_height . '">
+                  $return = '<a class="custom-brand" href="' . $designer_url . '" title="' . $designer_anchor . '" rel="external" targe="_blank">
+                                <img class="custom-brand-img" src="' . $backend_footer_image . '" alt="' . $designer_anchor . ' Logo" width="' . $backend_footer_image_width . '" height="' . $backend_footer_image_height . '">
                              </a>';
 
               if( $backend_footer_text = $this->args['backend_footer_text'] ) {

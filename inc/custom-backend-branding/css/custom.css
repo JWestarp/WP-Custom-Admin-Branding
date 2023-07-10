@@ -3,12 +3,14 @@
  * ---------------------------------------------------------------- */
 
 /* WP Admin Footer */
-p#footer-left img.custom-brand {
+p#footer-left img.custom-brand-img {
   position: relative;
   bottom: -2px;
 }
 
-p#footer-left span {
+p#footer-left span,
+p#footer-left a, {
+  display: inline-block;
   font-size: 14px;
 }
 
